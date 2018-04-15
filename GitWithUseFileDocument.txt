@@ -8,6 +8,12 @@ $git status
 3.本地查看仓库的日志
 $git log
 
+想看到最近一次提交所有更改过的文件
+$git log -n 1 --stat
+
+想看到最近一次提交所有更改的细节 
+$git log -n 1 -p
+
 4.本地创建一个分支,并切换到新建的分支
 $git checkout -b dev
 如果以后提交或者更新默认用哪个分支
@@ -63,10 +69,12 @@ $git push origin HEAD --force             注意是两个横岗
 $git branch -d dev
 
 14.删除远程分支
-$git branch -r -d origin/dev  
-已删除远程分支 origin/dev（曾为 eef866f）。  
-$git push origin --delete test
+$git branch -r -d origin/dev
 
+已删除远程分支 origin/dev（曾为 eef866f）。  
+$git push origin --delete dev
+
+这种方式也可以($git push origin :dev)
 15.合并分支
 如果我们想把test分支合并到master分支中，该怎么弄呢？首先先切换到master分支，然后执行
 $git merge test  
