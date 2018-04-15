@@ -1,0 +1,77 @@
+1.从git上克隆一份代码下来
+$git clone https://github.com/lcs8520/LearnCode.git
+然后输入用户名和密码
+
+2.本地查看仓库的状态
+$git status
+
+3.本地查看仓库的日志
+$git log
+
+4.本地创建一个分支,并切换到新建的分支
+$git checkout -b dev
+如果以后提交或者更新默认用哪个分支
+$git push --set-upstream origin dev
+
+5.查看本地仓库的分支
+$git branch
+查看所有分支
+$git branch -a
+
+6.当前分支添加新文件到本地仓库
+$git add luocs.java yxx.java  #添加指定文件
+$git add .  #添加当前目录下所有文件
+$git add -A #添加当前目录下所有文件
+
+
+7.提交当前文件到本地仓库,并注释
+$git commit -m "add luocs.java"
+
+8.提交当前分支到远程仓库
+$git push origin master #(注意:master为主干,如果master位置为分支时,输入分支名称)
+输入用户名/密码
+
+9.在本地仓库将分支代码合并到本地主干(commot id,可以git log 查看提交记录)
+$git cherry-pick 9a117df6678e475cff94e4377b938a687dc3ec03
+
+10.合并完本地仓库主干,将主干代码提交到远程仓库主干
+$git push origin master
+输入用户名和密码
+
+11.更新远程仓库代码到本地
+$git pull
+输入用户名/密码
+(pull= fetch+merge)
+ 
+如果有冲突输入 mergetool beyondmerge,处理冲突
+.gitignore修改之后，清除缓存，使之重新生效，注意前两行后面的小数点。
+$git rm -r --cached .  
+$git add .  
+$git commit -m "xxxx"
+	
+完整的一个简单操作流程
+
+12.彻底回退到某个commit
+先使用以下命令查看想回退到的commit的id是多少，id就是一串长长的数字。
+$git log  
+然后使用：（注意命令中的两个“-”）以下命令，彻底回退到这个commitid上。
+$git reset --hard <commit_id>  
+如果想清空这个commitid之后所有已经提交了的commit，则继续执行以下命令：
+$git push origin HEAD --force             注意是两个横岗
+
+13.删除本地分支
+$git branch -d dev
+
+14.删除远程分支
+$git branch -r -d origin/dev  
+已删除远程分支 origin/dev（曾为 eef866f）。  
+$git push origin --delete test
+
+15.合并分支
+如果我们想把test分支合并到master分支中，该怎么弄呢？首先先切换到master分支，然后执行
+$git merge test  
+
+7.冲突合并
+$git mergetool  
+然后输入:
+$beyond compare  
